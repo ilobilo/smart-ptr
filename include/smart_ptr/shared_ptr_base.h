@@ -1773,8 +1773,9 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
 	typename enable_if<__has_esft_base<_Yp2>::value>::type
 	_M_enable_shared_from_this_with(_Yp* __p) noexcept
 	{
-	  if (auto __base = __enable_shared_from_this_base(_M_refcount, __p))
-	    __base->_M_weak_assign(const_cast<_Yp2*>(__p), _M_refcount);
+	  // if (auto __base = __enable_shared_from_this_base(_M_refcount, __p))
+	  if (__p)
+      __p->_M_weak_assign(const_cast<_Yp2*>(__p), _M_refcount);
 	}
 
       template<typename _Yp, typename _Yp2 = typename remove_cv<_Yp>::type>

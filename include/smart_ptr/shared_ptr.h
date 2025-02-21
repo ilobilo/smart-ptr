@@ -960,14 +960,12 @@ _GLIBCXX_BEGIN_NAMESPACE_VERSION
 	void
 	_M_weak_assign(_Tp1* __p, const __shared_count<>& __n) const noexcept
 	{ _M_weak_this._M_assign(__p, __n); }
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wundefined-inline"
+
       // Found by ADL when this is an associated class.
-      /* friend */ const enable_shared_from_this*
+      friend const enable_shared_from_this*
       __enable_shared_from_this_base(const __shared_count<>&,
 				     const enable_shared_from_this* __p)
       { return __p; }
-#pragma GCC diagnostic pop
 
       template<typename, _Lock_policy>
 	friend class __shared_ptr;
